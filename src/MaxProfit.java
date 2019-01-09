@@ -1,35 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by chenchangxing on 2018/8/1.
  */
 public class MaxProfit {
     public static int maxProfit(int[] prices) {
-        int buy = 0;
-        int count = 0;
-        int sale = 1;
+        int[] b = new int[prices.length];
 
-        while (buy < prices.length - 1) {
-            for (; sale < prices.length; sale++) {
-                if (prices[buy] >= prices[sale]) {
-                    buy++;
-                    sale++;
-                    break;
-                }
-
-                if (sale == prices.length - 1) {
-                    count += (prices[sale] - prices[buy]);
-                    return count;
-                }
-
-                if (sale == prices.length - 1 || prices[sale] > prices[sale + 1]) {
-                    count += (prices[sale] - prices[buy]);
-                    buy = sale + 1;
-                    sale = buy + 1;
-                    break;
-                }
+        int currentPrice = -1;
+        for (int i = 0; i < prices.length; i++) {
+            if (currentPrice == -1 || currentPrice > prices[i]) {
+                currentPrice = prices[i];
+                continue;
             }
+
+            b[i] = prices[i] - currentPrice;
         }
 
-        return count;
+        int max = 0;
+        for (int i = 0; i < b.length; i++) {
+            max = Math.max(max, b[i]);
+        }
+
+        return max;
     }
 
     public static void main(String[] args) {
