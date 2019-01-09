@@ -27,8 +27,26 @@ public class MaxProfit {
         return max;
     }
 
+    public static int maxProfit1(int[] prices) {
+        if (prices.length <= 1) {
+            return 0;
+        }
+
+        int max = 0;
+        int min_price = prices[0];
+
+        for (int i = 1; i < prices.length; i++) {
+            int cur_price = prices[i];
+            if (cur_price - min_price > max) {
+                max = cur_price - min_price;
+            }
+            min_price = min_price > cur_price ? cur_price : min_price;
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         int[] a = new int[]{1, 2, 3, 4, 5};
-        System.out.println(maxProfit(a));
+        System.out.println(maxProfit1(a));
     }
 }
