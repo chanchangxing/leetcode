@@ -1,19 +1,13 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Created by chenchangxing on 2019/1/17.
  */
 public class CountPrimes {
-    static int[] nums;
     public static int countPrimes(int n) {
         if (n == 0 || n == 1) {
             return 0;
         }
 
-        nums = new int[n];
+        int[] nums = new int[n];
         nums[0] = -1;
         nums[1] = -1;
 
@@ -67,7 +61,5 @@ public class CountPrimes {
 
     public static void main(String[] args) {
         System.out.println(countPrimes1(100));
-        System.out.println(Arrays.toString(nums));
-//        System.out.println(isPrimes(9999));
     }
 }
