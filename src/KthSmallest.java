@@ -34,5 +34,4 @@ public class KthSmallest {
 
         kthSmallest(node, 1);
     }
-
 }
